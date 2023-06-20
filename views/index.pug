@@ -1,6 +1,6 @@
 html
   head
-    title='计数器!'
+    title='水哥计数器!'
     meta(name='viewport', content='width=device-width, initial-scale=1')
     link(rel='icon', type='image/png', href='favicon.png')
     link(rel='stylesheet', href='https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/light.min.css')
@@ -21,3 +21,53 @@ html
       }
 
   body
+    h3 How to use:
+
+    h5 SVG address
+    code https://count.yuenshui.cn/get/@:name
+
+    h5 Img tag
+    code &lt;img src="https://count.yuenshui.cn/get/@:name" alt=":name" />
+
+    h5 Markdown
+    code ![:name](https://count.yuenshui.cn/get/@:name)
+
+    h3 eg:
+      <img src="https://count.yuenshui.cn/get/@index" alt="Moe Count!" />
+
+    i Data can access by anyone, please
+      | <span style="color: #ff4500;"> DO NOT</span>
+      |  enter personal information
+
+    h3 Tool
+    .tool
+      code https://count.yuenshui.cn/get/@
+      input#name(type='text', placeholder=':name', style='display: inline-block; width: 80px; height: 1.4em; line-height: 1.4em; margin: 0 4px; vertical-align: middle;')
+      code ?theme=
+      select#theme(style='display: inline-block; height: 1.6em; line-height: 1.6em; font-size: 14px; margin: 0 4px; padding: 0 4px; vertical-align: middle;')
+        option(value='asoul') asoul
+        option(value='moebooru') moebooru
+        option(value='moebooru-h') moebooru-h
+        option(value='rule34') rule34
+        option(value='gelbooru') gelbooru
+        option(value='gelbooru-h') gelbooru-h
+      button#get(style='margin: 10px 0;', onclick='_evt_push("click", "normal", "get_counter")') Get
+      img#result(style='display: block;')
+
+      script.
+        var btn = document.getElementById('get'),
+            img = document.getElementById('result')
+
+        btn.addEventListener('click', function() {
+          var name = document.getElementById('name'),
+              themeEl = document.getElementById('theme')
+          var text = name.value ? name.value.trim() : ''
+          var theme = themeEl.value || 'moebooru'
+          if(!text) {
+            alert('Please input counter name.')
+            return
+          }
+
+          img.src = 'https://count.yuenshui.cn/get/@' + text + '?theme=' + theme
+        })
+

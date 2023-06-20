@@ -1,0 +1,23 @@
+html
+  head
+    title='计数器!'
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='icon', type='image/png', href='favicon.png')
+    link(rel='stylesheet', href='https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/light.min.css')
+    link(rel='stylesheet', href='style.css')
+
+    script.
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-2RLWN5JXRL');
+
+      function _evt_push(type, category, label){
+        gtag('event', type, {
+          'event_category' : category,
+          'event_label' : label
+        });
+      }
+
+  body
