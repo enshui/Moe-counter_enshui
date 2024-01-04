@@ -3,4 +3,4 @@ services:
   moe-counter:
     build: .
     ports:
-      - "3000:3000"
+      - "3003:3000"
